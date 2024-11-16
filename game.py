@@ -36,8 +36,8 @@ class GoldRush(Matrix):
             self.matrix.append([])
             for col in range(self.cols):
                 if row % 2 != 0:
-                    rand_index = random.randint(0, 1)
-                    rand_element = elements[rand_index]
+                    random_index = random.randint(0, 1)
+                    rand_element = elements[random_index]
                     self.matrix[row].append(rand_element)
                     if rand_element == COIN:
                         coins += 1
@@ -72,13 +72,7 @@ class GoldRush(Matrix):
             return self.winner
 
     def _check_other_player(self, player):
-        otherPlayer = None
-        if player == PLAYER1:
-            otherPlayer = PLAYER2
-            return otherPlayer
-        elif player == PLAYER2:
-            otherPlayer = PLAYER1
-            return otherPlayer    
+        return PLAYER2 if player == PLAYER1 else PLAYER1 
 
     def _move_and_update_score(self, curr_row, curr_col, player, delta_row, delta_col):
         other_player = self._check_other_player(player)
@@ -127,7 +121,9 @@ class GoldRush(Matrix):
             self._move_and_update_score_right(curr_row, curr_col, player)
         elif direction == LEFT:
             self._move_and_update_score_left(curr_row, curr_col, player)
-
+        else:
+            raise ValueError("Invalid direction")
+           
     def _update_Score(self, player):
         player_num = player[-1]
         score_attr = f"scorePlayer{player_num}"
