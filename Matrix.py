@@ -8,10 +8,10 @@ class Matrix:
         num = 1
         if self.rows == 0 and self.cols == 0:
             return
-        for i in range(self.rows):
+        for row in range(self.rows):
             self.matrix.append([])
             for j in range(self.cols):
-                self.matrix[i].append(num)
+                self.matrix[row].append(num)
                 num += 1
 
     def print(self):
@@ -26,7 +26,7 @@ class Matrix:
                 return {'x': r, 'y': c}
         return None
 
-    def get(self, row_num, col_num):
+    def get_location(self, row_num, col_num):
         return self.matrix[row_num][col_num]
 
     def print_row(self, row_num):
@@ -35,5 +35,3 @@ class Matrix:
 
     def alter(self, row_num, col_num, new_value):
         self.matrix[row_num][col_num] = new_value
-
-

@@ -15,7 +15,7 @@ def play_game():
         direction = input(f"{player}, enter your move (up, down, left, right): ").strip().lower()
         game.move_player(player, direction)
         game.print()
-        if game._check_win(player):
+        if game._check_winner(player):
             print(f"{player} wins!")
             break
 
@@ -23,7 +23,7 @@ def play_game():
         direction = input(f"{player}, enter your move (up, down, left, right): ").strip().lower()
         game.move_player(player, direction)
         game.print()
-        if game._check_win(player):
+        if game._check_winner(player):
             print(f"{player} wins!")
             break
 
